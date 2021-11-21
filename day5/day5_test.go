@@ -22,7 +22,7 @@ func TestOps(t *testing.T) {
 }
 
 func TestOpsExtended(t *testing.T) {
-	if runGravityAssistV2([]int{3, 9, 8, 9, 10, 9, 4, 9, 99, -1, 8}, 8) == 0 {
+	if GravityAssistV2([]int{3, 9, 8, 9, 10, 9, 4, 9, 99, -1, 8}, []int{8}) == 0 {
 		t.Error("Expected output 0")
 	}
 

@@ -28,8 +28,9 @@ func paramParser(program []int, i int, mode int) int {
 	}
 }
 
-func runGravityAssistV2(program []int, input int) int {
+func GravityAssistV2(program []int, inputs []int) int {
 	i := 0
+	inputsIndex := 0
 	var diagnosticOut int
 	for i < len(program) {
 		op := parseOperation(program[i])
@@ -44,7 +45,8 @@ func runGravityAssistV2(program []int, input int) int {
 				program[program[i+3]] = paramParser(program, i+1, op.modeParam1) * paramParser(program, i+2, op.modeParam2)
 				i += 4
 			case 3:
-				program[program[i+1]] = input
+				program[program[i+1]] = inputs[inputsIndex]
+				inputsIndex++
 				i += 2
 			case 4:
 				if program[i+2] == 99 {
@@ -84,9 +86,9 @@ func runGravityAssistV2(program []int, input int) int {
 }
 
 func PrintSolution() {
-	output := runGravityAssistV2(utils.ParseIntArrays("./inputs/day5.txt")[0], 1)
+	output := GravityAssistV2(utils.ParseIntArrays("./inputs/day5.txt")[0], []int{1})
 	fmt.Println("Program Output (Part 1):", output)
-	output2 := runGravityAssistV2(utils.ParseIntArrays("./inputs/day5.txt")[0], 5)
+	output2 := GravityAssistV2(utils.ParseIntArrays("./inputs/day5.txt")[0], []int{5})
 	fmt.Println("Program Output (Part 2):", output2)
 
 }
